@@ -17,7 +17,7 @@ const MainRoute: React.FC = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: colors.background,
+      background: colors.darkBlue,
     },
   };
 

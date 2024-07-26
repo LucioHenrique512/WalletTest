@@ -1,9 +1,25 @@
+import {RFPercentage} from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  flex: 1;
+`;
 
-export const Title = styled.Text``;
+export const ScreenTitleContainer = styled.View`
+  background: ${({theme}) => theme.colors.white};
+  height: ${RFPercentage(8)}px;
+  border-radius: 0px 0px ${RFPercentage(5)}px ${RFPercentage(5)}px;
+  justify-content: center;
+  align-items: center;
+`;
 
-export const BackButtonContainer = styled.View``;
+export const ScreenTitle = styled.Text`
+  font-size: ${({theme}) => theme.sizes.fontSize.md}px;
+  color: ${({theme}) => theme.colors.skyblue};
+`;
 
-export const RightButtonContainer = styled.View``;
+export const ContentContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  padding: ${({theme}) => theme.sizes.commonPadding}px;
+`;
