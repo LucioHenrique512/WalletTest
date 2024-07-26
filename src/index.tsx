@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components/native';
-
-const STyled = styled.Text`
-  background: red;
-`;
+import MainRoute from './routes';
+import {ThemeProvider} from 'styled-components/native';
+import {lightTheme} from './themes';
 
 export const Bootstrap = () => {
-  return <STyled>Hello world</STyled>;
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <MainRoute />
+    </ThemeProvider>
+  );
 };
