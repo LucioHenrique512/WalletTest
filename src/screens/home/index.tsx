@@ -8,8 +8,14 @@ import {
   Spacing,
   Text,
 } from '../../components';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {MainRouteStackParams} from '../../routes';
+
+type NavigationProps = NavigationProp<MainRouteStackParams, 'Home'>;
 
 export const HomeScreen: React.FC = () => {
+  const {navigate} = useNavigation<NavigationProps>();
+
   return (
     <ContainerWithSqares>
       <S.Container>
@@ -17,12 +23,20 @@ export const HomeScreen: React.FC = () => {
           Wallet Test
         </Text>
         <Spacing />
-        <Button text="Meus cartões" variant="primary" onPress={() => {}} />
+        <Button
+          text="Meus cartões"
+          variant="primary"
+          onPress={() => {
+            navigate('Wallet');
+          }}
+        />
         <Spacing />
         <Button
           text="Cadastrar cartão"
           variant="secondary"
-          onPress={() => {}}
+          onPress={() => {
+            navigate('Register');
+          }}
         />
       </S.Container>
     </ContainerWithSqares>
