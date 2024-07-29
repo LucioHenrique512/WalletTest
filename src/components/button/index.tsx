@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './styles';
 import {ButtonProps, ButtonVariants} from './types';
-import {DefaultTheme, useTheme} from 'styled-components/native';
 import {ActivityIndicator} from 'react-native';
 import {Text} from '../typography';
 import {ThemeType} from '../../themes';
