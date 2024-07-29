@@ -28,7 +28,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
   };
 
   return (
-    <S.Container>
+    <S.Container style={{width: '100%'}}>
       <Text fontSize="sm" color="grey">
         {label}
       </Text>
@@ -37,11 +37,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
         <S.FieldContainer>
           {leftItem && <S.LeftContainer>{leftItem}</S.LeftContainer>}
           {mask ? (
-            <S.TextFieldMask
-              {...props}
-              ref={ref}
-              mask={mask}
-            />
+            <S.TextFieldMask {...props} ref={ref} mask={mask} />
           ) : (
             <S.TextField {...props} ref={ref} />
           )}

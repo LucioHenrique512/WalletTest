@@ -3,8 +3,12 @@ import styled from 'styled-components/native';
 
 interface SpacingProps {
   size?: number;
+  vertical?: boolean;
 }
 
+const getSize = (size?: number) => (size ? size : RFPercentage(2));
+
 export const Spacing = styled.View<SpacingProps>`
-  height: ${({size}) => (size ? size : RFPercentage(2))}px;
+  ${({vertical, size}) =>
+    `${vertical ? 'width' : 'height'}:${getSize(size)}px;`}
 `;

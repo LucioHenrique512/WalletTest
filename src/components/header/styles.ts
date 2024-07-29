@@ -1,9 +1,10 @@
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.View<{transparent?: boolean}>`
   height: ${RFPercentage(8)}px;
-  background: ${({theme}) => theme.colors.white};
+  background: ${({theme, transparent}) =>
+    transparent ? 'transparent' : theme.colors.white};
   justify-content: center;
   position: relative;
   z-index: 10;

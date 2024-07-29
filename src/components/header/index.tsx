@@ -4,13 +4,19 @@ import Icon from 'react-native-vector-icons/Feather';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 import {useTheme} from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
+import {Text} from '../typography';
 
 interface HeaderProps {
   title: string;
   richtComponent?: React.ReactNode;
+  transparent?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({richtComponent, title}) => {
+export const Header: React.FC<HeaderProps> = ({
+  richtComponent,
+  title,
+  transparent,
+}) => {
   const {colors} = useTheme();
   const {goBack} = useNavigation();
 
@@ -27,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({richtComponent, title}) => {
   };
 
   return (
-    <S.Container style={shadowProps}>
+    <S.Container style={!transparent && shadowProps} transparent={transparent}>
       <S.ButtonsContainer>
         <S.BackButtonContainer onPress={goBack}>
           <Icon
@@ -38,7 +44,12 @@ export const Header: React.FC<HeaderProps> = ({richtComponent, title}) => {
         </S.BackButtonContainer>
         <S.RightContainer>{richtComponent}</S.RightContainer>
       </S.ButtonsContainer>
-      <S.Title>{title}</S.Title>
+      <Text
+        textCenter
+        fontSize="md"
+        color={transparent ? 'skyblue' : 'darkBlue'}>
+        {title}
+      </Text>
     </S.Container>
   );
 };
