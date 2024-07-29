@@ -4,3 +4,7 @@ jest.mock('@react-navigation/native', () => ({
     navigate: jest.fn(),
   })),
 }));
+
+// jest.mock('react-native-text-input-mask', () => ({
+//   default: jest.fn(),
+// }))

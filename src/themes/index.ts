@@ -5,6 +5,7 @@ export const lightTheme = {
     commonPadding: RFPercentage(2.8),
 
     fontSize: {
+      xxs: RFPercentage(1),
       xs: RFPercentage(1.5),
       sm: RFPercentage(1.8),
       md: RFPercentage(2.5),
@@ -20,6 +21,7 @@ export const lightTheme = {
     darkGrey: '#3F3F3F',
     black: '#000000',
     limeGreen: '#A5FF32',
+    error: '#FF0000',
   },
 };
 
