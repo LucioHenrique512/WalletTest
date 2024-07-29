@@ -11,6 +11,7 @@ import * as S from './styles';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 export const RegisterScreen: React.FC = () => {
   const schema = yup.object().shape({
@@ -27,11 +28,10 @@ export const RegisterScreen: React.FC = () => {
 
   const onSubmit = (data: any) => console.log(data);
 
-
   return (
     <ContainerWithSqares>
       <S.Container>
-        <Header title='Cadastro' transparent/>
+        <Header title="Cadastro" transparent />
         <S.Content>
           <Text fontSize="lg" color="white" textCenter>
             Wallet Test
@@ -43,6 +43,11 @@ export const RegisterScreen: React.FC = () => {
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
                 <TextInput
+                  leftItem={
+                    <S.CameraIcon>
+                      <Icon name="camera" color={'white'} />
+                    </S.CameraIcon>
+                  }
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
@@ -110,7 +115,7 @@ export const RegisterScreen: React.FC = () => {
               </S.Cell>
             </S.Row>
             <Spacing />
-            <Button text="Enviar" onPress={handleSubmit(onSubmit)}  />
+            <Button text="Enviar" onPress={handleSubmit(onSubmit)} />
           </S.FormContainer>
         </S.Content>
       </S.Container>

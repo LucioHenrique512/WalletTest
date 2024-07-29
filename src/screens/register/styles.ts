@@ -19,3 +19,9 @@ export const Row = styled.View`
 export const Cell = styled.View`
   flex: 1;
 `;
+
+export const CameraIcon = styled.View`
+  background: ${({theme}) => theme.colors.skyblue};
+  padding: 8px;
+  border-radius: 100px;
+`;
