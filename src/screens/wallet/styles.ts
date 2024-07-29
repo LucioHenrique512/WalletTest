@@ -20,6 +20,7 @@ export const ScreenTitle = styled.Text`
 
 export const ContentContainer = styled.View`
   flex: 1;
-  justify-content: center;
   padding: ${({theme}) => theme.sizes.commonPadding}px;
+  justify-content: center;
+  position: relative;
 `;

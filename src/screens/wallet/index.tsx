@@ -1,14 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import * as S from './styles';
 import {MainRouteStackParams} from '../../routes';
-import {Card, Header} from '../../components';
+import {Header} from '../../components';
+import {AnimatedCardList} from './components/cardlist';
+import {CardType} from '../../services/types';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Wallet'>;
 
+const cards: CardType[] = [
+  {
+    id: '1',
+    name: 'Relampago Marquinhos',
+    type: 'green',
+    number: '1234 1234 1234 1234',
+    validThru: '12/24',
+  },
+  {
+    id: '2',
+    name: 'Tomate Pistão da Silva',
+    type: 'black',
+    number: '1234 1234 1234 1234',
+    validThru: '12/24',
+  },
+];
+
 export const WalletScreen: React.FC = () => {
   const {} = useNavigation<NavigationProps>();
+  const [selectedCard, setSelectedCard] = useState<{
+    index: number;
+    card: CardType;
+  }>();
 
   return (
     <S.Container>
@@ -17,17 +40,14 @@ export const WalletScreen: React.FC = () => {
         <S.ScreenTitle>Meus cartões</S.ScreenTitle>
       </S.ScreenTitleContainer>
       <S.ContentContainer>
-        <Card
-          name="Relampago Marquinhos"
-          type="black"
-          number="1234 1234 1234 1234"
-          validThru="12/24"
-        />
-        <Card
-          name="Relampago Marquinhos"
-          type="green"
-          number="1234 1234 1234 1234"
-          validThru="12/24"
+        <AnimatedCardList
+          cards={cards}
+          selectedCard={selectedCard}
+          onPressCard={data => {
+            setSelectedCard(prev =>
+              data.card.id === prev?.card.id ? undefined : data,
+            );
+          }}
         />
       </S.ContentContainer>
     </S.Container>

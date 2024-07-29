@@ -14,7 +14,9 @@ export const Container = styled.View<ContainerProps>`
   padding: ${({theme}) => theme.sizes.commonPadding}px;
   border-radius: ${RFPercentage(2)}px;
   height: ${HEIGHT}px;
+  width: 100%;
   justify-content: space-between;
+  //opacity: 0.5;
 `;
 
 export const CardOwnerName = styled(Text)`
