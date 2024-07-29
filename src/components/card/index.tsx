@@ -23,7 +23,7 @@ export const Card: React.FC<CardProps> = ({
   const textColor = type === 'black' ? 'white' : 'darkGrey';
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable testID="card-pressable" onPress={onPress}>
       <S.Container backgroundColor={background}>
         <Text color={textColor} fontSize="md">
           {title}

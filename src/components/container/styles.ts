@@ -9,21 +9,24 @@ export const Container = styled.View`
 type SquareProps = {bottom?: boolean};
 
 const getPositionDefinitions = (bottom?: boolean) => {
+  const upright = -RFPercentage(26);
+  const landscape = -RFPercentage(17);
+
   if (bottom) {
     return `
-      bottom: ${-RFPercentage(23)}px;
-      right: ${-RFPercentage(17)}px;
+      bottom: ${upright}px;
+      right: ${landscape}px;
       `;
   }
 
   return `
-      top: ${-RFPercentage(23)}px;
-      left: ${-RFPercentage(17)}px;
+      top: ${upright}px;
+      left: ${landscape}px;
       `;
 };
 
 export const Square = styled.View<SquareProps>`
-  background: ${({theme}) => theme.colors.lightGrey}30;
+  background: ${({theme}) => theme.colors.lightGrey}20;
   height: ${RFPercentage(55)}px;
   width: ${RFPercentage(50)}px;
   border-radius: ${RFPercentage(5)}px;
