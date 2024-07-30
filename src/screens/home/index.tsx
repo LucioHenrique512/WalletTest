@@ -4,7 +4,6 @@ import * as S from './styles';
 import {
   Button,
   ContainerWithSqares,
-  Header,
   Spacing,
   Text,
 } from '../../components';

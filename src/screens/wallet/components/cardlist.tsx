@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {CardType} from '../../../services/types';
+import {CardType} from '../../../infra/types';
 import styled from 'styled-components/native';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 

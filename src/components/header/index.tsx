@@ -33,9 +33,9 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <S.Container style={!transparent && shadowProps} transparent={transparent}>
+    <S.Container testID='header-container' style={!transparent && shadowProps} transparent={transparent}>
       <S.ButtonsContainer>
-        <S.BackButtonContainer onPress={goBack}>
+        <S.BackButtonContainer testID="back-button" onPress={goBack}>
           <Icon
             name="arrow-left"
             size={RFPercentage(3)}

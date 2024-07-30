@@ -9,7 +9,7 @@ import {
   WalletScreen,
 } from '../screens';
 import {useTheme} from 'styled-components/native';
-import {CardType} from '../services/types';
+import {CardType} from '../infra/types';
 
 export type MainRouteStackParams = {
   Wallet: undefined;

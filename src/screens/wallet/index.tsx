@@ -5,7 +5,7 @@ import * as S from './styles';
 import {MainRouteStackParams} from '../../routes';
 import {Header} from '../../components';
 import {AnimatedCardList} from './components/cardlist';
-import {CardType} from '../../services/types';
+import {CardType} from '../../infra/types';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Wallet'>;
 
@@ -16,6 +16,7 @@ const cards: CardType[] = [
     type: 'green',
     number: '1234 1234 1234 1234',
     validThru: '12/24',
+    ccv: '123',
   },
   {
     id: '2',
@@ -23,6 +24,7 @@ const cards: CardType[] = [
     type: 'black',
     number: '1234 1234 1234 1234',
     validThru: '12/24',
+    ccv: '123',
   },
 ];
 

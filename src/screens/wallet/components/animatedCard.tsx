@@ -6,7 +6,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import {CardData} from './cardlist';
-import {CardType} from '../../../services/types';
+import {CardType} from '../../../infra/types';
 import {Card} from '../../../components';
 import {RFPercentage} from 'react-native-responsive-fontsize';
 
