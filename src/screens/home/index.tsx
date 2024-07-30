@@ -26,7 +26,7 @@ export const HomeScreen: React.FC = () => {
           text="Meus cartões"
           variant="primary"
           onPress={() => {
-            navigate('Wallet');
+            navigate('Loading');
           }}
         />
         <Spacing />

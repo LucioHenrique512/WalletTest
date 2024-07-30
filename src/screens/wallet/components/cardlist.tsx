@@ -11,6 +11,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import {Button} from '../../../components';
 
 export type CardData = {index: number; card: CardType};
 
@@ -75,4 +76,5 @@ export const AnimatedCardList: React.FC<AnimatedCardListProps> = ({
 
 const Container = styled(Animated.View)`
   position: relative;
+  width: 100%;
 `;

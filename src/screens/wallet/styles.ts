@@ -23,4 +23,11 @@ export const ContentContainer = styled.View`
   padding: ${({theme}) => theme.sizes.commonPadding}px;
   justify-content: center;
   position: relative;
+  align-items: center;
+`;
+
+export const ButtonContainer = styled.View`
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 `;

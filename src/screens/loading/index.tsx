@@ -3,7 +3,6 @@ import * as S from './styles';
 import {ContainerWithSqares} from '../../components';
 import WalletIcon from '../../assets/wallet.svg';
 import {
-  Easing,
   ReduceMotion,
   useAnimatedStyle,
   useSharedValue,
@@ -47,6 +46,11 @@ export const LoadingScreen: React.FC = () => {
     };
     if (cards.length === 0) {
       fetchData();
+    } else {
+      reset({
+        index: 0,
+        routes: [{name: 'Home'}, {name: 'Wallet'}],
+      });
     }
   }, []);
 

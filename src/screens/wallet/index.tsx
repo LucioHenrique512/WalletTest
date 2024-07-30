@@ -3,19 +3,18 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import * as S from './styles';
 import {MainRouteStackParams} from '../../routes';
-import {Header} from '../../components';
+import {Button, Header} from '../../components';
 import {AnimatedCardList} from './components/cardlist';
 import {CardType} from '../../infra/types';
-import { useAppContext } from '../../context';
+import {useAppContext} from '../../context';
+import {AnimatedButton} from './components/animatedButton';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Wallet'>;
-
-
 
 export const WalletScreen: React.FC = () => {
   const {} = useNavigation<NavigationProps>();
 
-  const {cards} = useAppContext()
+  const {cards} = useAppContext();
 
   const [selectedCard, setSelectedCard] = useState<{
     index: number;
@@ -38,6 +37,11 @@ export const WalletScreen: React.FC = () => {
             );
           }}
         />
+        {selectedCard && (
+          <S.ButtonContainer>
+            <AnimatedButton />
+          </S.ButtonContainer>
+        )}
       </S.ContentContainer>
     </S.Container>
   );

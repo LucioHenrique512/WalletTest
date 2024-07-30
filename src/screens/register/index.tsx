@@ -8,7 +8,6 @@ import uuid from 'react-native-uuid';
 import CameraIcon from '../../assets/camera.svg';
 import * as S from './styles';
 import {MainRouteStackParams} from '../../routes';
-import {useCardsData} from '../../hooks/useCardsData';
 import {CardType} from '../../infra/types';
 import {
   Button,
