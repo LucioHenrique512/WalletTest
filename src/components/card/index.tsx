@@ -8,7 +8,7 @@ interface CardProps {
   number: string;
   validThru: string;
   type: 'black' | 'green';
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -23,7 +23,7 @@ export const Card: React.FC<CardProps> = ({
   const textColor = type === 'black' ? 'white' : 'darkGrey';
 
   return (
-    <Pressable testID="card-pressable" onPress={onPress}>
+    <Pressable testID="card-pressable" onPress={() => onPress && onPress()}>
       <S.Container backgroundColor={background}>
         <Text color={textColor} fontSize="md">
           {title}

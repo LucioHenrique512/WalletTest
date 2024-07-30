@@ -33,4 +33,5 @@ export const Square = styled.View<SquareProps>`
   position: absolute;
   transform: rotate(-124deg);
   ${({bottom}) => getPositionDefinitions(bottom)}
+  z-index: -1;
 `;

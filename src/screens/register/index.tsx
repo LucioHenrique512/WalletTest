@@ -11,9 +11,15 @@ import * as S from './styles';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import CameraIcon from '../../assets/camera.svg';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {MainRouteStackParams} from '../../routes';
+
+type NavigationProps = NavigationProp<MainRouteStackParams, 'Register'>;
 
 export const RegisterScreen: React.FC = () => {
+  const {navigate} = useNavigation<NavigationProps>();
+
   const schema = yup.object().shape({
     number: yup.string().required('Campo obrigatório'),
     name: yup.string().required('Campo obrigatório'),
@@ -23,10 +29,13 @@ export const RegisterScreen: React.FC = () => {
 
   const {control, handleSubmit, formState} = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {number: ''},
+    defaultValues: {number: '', name: '', validThru: '', cvv: ''},
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    console.log(data);
+    navigate('Finish', {card: data});
+  };
 
   return (
     <ContainerWithSqares>
@@ -45,7 +54,7 @@ export const RegisterScreen: React.FC = () => {
                 <TextInput
                   leftItem={
                     <S.CameraIcon>
-                      <Icon name="camera" color={'white'} />
+                      <CameraIcon color={'white'} />
                     </S.CameraIcon>
                   }
                   onBlur={onBlur}
@@ -115,7 +124,7 @@ export const RegisterScreen: React.FC = () => {
               </S.Cell>
             </S.Row>
             <Spacing />
-            <Button text="Enviar" onPress={handleSubmit(onSubmit)} />
+            <Button text="Enviar" onPress={(handleSubmit(onSubmit))} />
           </S.FormContainer>
         </S.Content>
       </S.Container>

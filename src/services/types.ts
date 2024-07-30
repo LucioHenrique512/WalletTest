@@ -1,7 +1,8 @@
 export type CardType = {
-  id: string;
+  id?: string;
   name: string;
   type: 'black' | 'green';
   number: string;
   validThru: string;
+  ccv: string;
 };

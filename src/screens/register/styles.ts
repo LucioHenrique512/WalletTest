@@ -1,3 +1,4 @@
+import {RFPercentage} from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -22,6 +23,9 @@ export const Cell = styled.View`
 
 export const CameraIcon = styled.View`
   background: ${({theme}) => theme.colors.skyblue};
-  padding: 8px;
   border-radius: 100px;
+  height: ${RFPercentage(4.2)}px;
+  width: ${RFPercentage(4.2)}px;
+  justify-content: center;
+  align-items: center;
 `;
