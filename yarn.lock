@@ -3524,6 +3524,7 @@ __metadata:
     react-native-svg: ^15.4.0
     react-native-svg-transformer: ^1.5.0
     react-native-text-input-mask: ^3.2.0
+    react-native-uuid: ^2.0.2
     react-native-vector-icons: ^10.1.0
     react-test-renderer: 18.2.0
     styled-components: ^6.1.12
@@ -9103,6 +9104,13 @@ __metadata:
   peerDependencies:
     react-native: ">=0.69.0"
   checksum: 43f509bd2631514182bd1c24a118afc8e47d4e7d7ea2c6e945edae67e9a2c4bff397caacd90fb6743d3c1f720ac58feb21ca1f3baadddbf7b66d988e1fed7596
+  languageName: node
+  linkType: hard
+
+"react-native-uuid@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "react-native-uuid@npm:2.0.2"
+  checksum: 149f65549132a240ac237f4db34063fd08473e4b3a9b5958e3d0d6722cf10754efb222b1c6085a3dc42e0718ca9575b38cd5535ae83a96534dde0f54d343e915
   languageName: node
   linkType: hard
 

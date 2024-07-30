@@ -1,4 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Controller, useForm} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import uuid from 'react-native-uuid';
+
+import CameraIcon from '../../assets/camera.svg';
+import * as S from './styles';
+import {MainRouteStackParams} from '../../routes';
+import {useCardsData} from '../../hooks/useCardsData';
+import {CardType} from '../../infra/types';
 import {
   Button,
   ContainerWithSqares,
@@ -7,18 +18,15 @@ import {
   Text,
   TextInput,
 } from '../../components';
-import * as S from './styles';
-import {Controller, useForm} from 'react-hook-form';
-import * as yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup';
-import CameraIcon from '../../assets/camera.svg';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {MainRouteStackParams} from '../../routes';
+import {Alert} from 'react-native';
+import {postCard} from '../../infra/api';
+import {delay} from '../../utils';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Register'>;
 
 export const RegisterScreen: React.FC = () => {
-  const {navigate} = useNavigation<NavigationProps>();
+  const {navigate, reset} = useNavigation<NavigationProps>();
+  const [loading, setLoading] = useState(false);
 
   const schema = yup.object().shape({
     number: yup.string().required('Campo obrigatório'),
@@ -32,9 +40,29 @@ export const RegisterScreen: React.FC = () => {
     defaultValues: {number: '', name: '', validThru: '', cvv: ''},
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    navigate('Finish', {card: data});
+  const onSubmit = async (data: any) => {
+    try {
+      setLoading(true);
+      const id = uuid.v4();
+
+      const toSave: CardType = {
+        ...data,
+        id,
+        type: Math.random() < 0.5 ? 'black' : 'green',
+      };
+
+      await postCard(toSave);
+      await delay(2000);
+      reset({
+        index: 0,
+        routes: [{name: 'Finish', params: {card: toSave}}],
+      });
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Ops!', 'Ocorreu um erro ao salvar o cartão');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -124,7 +152,11 @@ export const RegisterScreen: React.FC = () => {
               </S.Cell>
             </S.Row>
             <Spacing />
-            <Button text="Enviar" onPress={(handleSubmit(onSubmit))} />
+            <Button
+              text="Enviar"
+              onPress={handleSubmit(onSubmit)}
+              loading={loading}
+            />
           </S.FormContainer>
         </S.Content>
       </S.Container>

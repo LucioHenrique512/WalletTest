@@ -65,7 +65,7 @@ export const AnimatedCard: React.FC<AnimatedCardProps> = ({
         onPress={() => {
           onPressCard({index, card: data});
         }}
-        name={data.name + data.id}
+        name={data.name}
         type={data.type}
         number={data.number}
         validThru={data.validThru}

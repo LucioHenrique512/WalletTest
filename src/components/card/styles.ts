@@ -16,6 +16,8 @@ export const Container = styled.View<ContainerProps>`
   height: ${HEIGHT}px;
   width: 100%;
   justify-content: space-between;
+  border-width: 1px;
+  border-color: ${({theme}) => theme.colors.darkGrey};
   //opacity: 0.5;
 `;
 
