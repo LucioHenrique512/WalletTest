@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
-import {HomeScreen} from '../../src/screens';
-import {render} from '../config/render';
+import {render} from '../../utils/testUtils';
+import {HomeScreen} from '.';
 
 describe('HomeScreen', () => {
   const mockkNavigate = jest.fn();
@@ -25,7 +25,7 @@ describe('HomeScreen', () => {
     const button = getByText('Meus cartões');
 
     fireEvent.press(button);
-    expect(mockkNavigate).toHaveBeenCalledWith('Wallet');
+    expect(mockkNavigate).toHaveBeenCalledWith('Loading');
   });
 
   it('should navigate to "Register" screen when "Cadastrar cartão" button is pressed', () => {

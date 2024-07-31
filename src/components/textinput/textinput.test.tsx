@@ -1,18 +1,13 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
 import {Text} from 'react-native';
-import {render} from '../config/render';
-import {TextInput} from '../../src/components';
+import {TextInput} from '.';
+import {render} from '../../utils/testUtils';
 
-// Crie um mock do módulo react-native-text-input-mask
 jest.mock('react-native-text-input-mask', () => {
-  // Retorne um objeto com um componente de função
-
-  
-    return {
-    __esModule: true, // para garantir que ele seja tratado como um módulo ES
+  return {
+    __esModule: true,
     default: jest.fn(() => {
-      // Retorne um componente funcional que renderiza uma View
       const {View} = require('react-native');
       return <View testID="text-field-mask" />;
     }),

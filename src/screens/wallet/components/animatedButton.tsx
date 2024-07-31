@@ -13,7 +13,6 @@ export const AnimatedButton: React.FC = ({}) => {
 
   useEffect(() => {
     opacity.value = withDelay(400, withSpring(1));
-    console.log('opacity', opacity.value);
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => ({

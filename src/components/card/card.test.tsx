@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
-import {Card} from '../../src/components/card/index';
-import { render } from '../config/render';
+import {render} from '../../utils/testUtils';
+import {Card} from '.';
 
 describe('Card', () => {
   const mockOnPress = jest.fn();

@@ -1,8 +1,8 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
-import {Header} from '../../src/components/header/index';
 import {Text} from 'react-native';
-import {render} from '../config/render';
+import { render } from '../../utils/testUtils';
+import { Header } from '.';
 
 describe('Header', () => {
   it('should render the title correctly', () => {
@@ -25,10 +25,10 @@ describe('Header', () => {
     expect(goBackMock).toHaveBeenCalled();
   });
 
-  it('should render the richtComponent correctly', () => {
-    const richtComponent = <Text>Test Component</Text>;
+  it('should render the rightComponent correctly', () => {
+    const rightComponent = <Text>Test Component</Text>;
     const {getByText} = render(
-      <Header title="Test Title" richtComponent={richtComponent} />,
+      <Header title="Test Title" rightComponent={rightComponent} />,
     );
 
     expect(getByText('Test Component')).toBeTruthy();
