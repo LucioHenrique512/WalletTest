@@ -8,12 +8,12 @@ import {Text} from '../typography';
 
 interface HeaderProps {
   title: string;
-  richtComponent?: React.ReactNode;
+  rightComponent?: React.ReactNode;
   transparent?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  richtComponent,
+  rightComponent,
   title,
   transparent,
 }) => {
@@ -42,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
             color={colors.skyblue}
           />
         </S.BackButtonContainer>
-        <S.RightContainer>{richtComponent}</S.RightContainer>
+        <S.RightContainer>{rightComponent}</S.RightContainer>
       </S.ButtonsContainer>
       <Text
         textCenter

@@ -43,7 +43,7 @@ export const FinishScreen: React.FC = () => {
           name={card.name}
           number={card.number}
           validThru={card.validThru}
-          type="black"
+          type={card.type}
         />
         <Spacing size={RFPercentage(4)} />
         <Button

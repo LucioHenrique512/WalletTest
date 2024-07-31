@@ -44,14 +44,7 @@ export const LoadingScreen: React.FC = () => {
         ]);
       }
     };
-    if (cards.length === 0) {
-      fetchData();
-    } else {
-      reset({
-        index: 0,
-        routes: [{name: 'Home'}, {name: 'Wallet'}],
-      });
-    }
+    fetchData();
   }, []);
 
   useEffect(() => {
