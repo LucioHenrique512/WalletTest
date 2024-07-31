@@ -1,7 +1,7 @@
 import React from 'react';
 import {FinishScreen} from '.';
-import {render} from '../../utils/testUtils';
 import { fireEvent } from '@testing-library/react-native';
+import { render } from '../../../tests/render';
 
 jest.mock('@react-navigation/native', () => ({
   useNavigation: jest.fn().mockReturnValue({navigate: jest.fn()}),
@@ -30,7 +30,7 @@ describe('FinishScreen component', () => {
 
     const titleElement = getByText('Wallet Test');
     const successMessageElement = getByText('Cartão cadastrado com sucesso!');
-    const cardElement = getByText(card.number);
+    const cardElement = getByText(card.name);
     const buttonElement = getByText('Avançar');
 
     expect(titleElement).toBeDefined();

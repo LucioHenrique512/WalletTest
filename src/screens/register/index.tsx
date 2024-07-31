@@ -32,7 +32,17 @@ export const RegisterScreen: React.FC = () => {
   const schema = yup.object().shape({
     number: yup.string().required('Campo obrigatório'),
     name: yup.string().required('Campo obrigatório'),
-    validThru: yup.string().required('Campo obrigatório'),
+    validThru: yup
+      .string()
+      .test('validThru', 'Data inválida', value => {
+        if (!value) {
+          return false;
+        }
+        const [month, year] = value.split('/');
+        const validMonth = Number(month) > 0 && Number(month) <= 12;
+        const validYear = Number(year) >= new Date().getFullYear() % 100;
+        return validMonth && validYear;
+      }).required("Campo obrigatório"),
     cvv: yup.string().required('Campo obrigatório'),
   });
 
@@ -65,6 +75,7 @@ export const RegisterScreen: React.FC = () => {
       setLoading(false);
     }
   };
+
 
   return (
     <ContainerWithSqares>
@@ -125,7 +136,7 @@ export const RegisterScreen: React.FC = () => {
                       value={value}
                       label="vencimento"
                       mask="[00]/[00]"
-                      errorText={formState.errors.name?.message}
+                      errorText={formState.errors.validThru?.message}
                       keyboardType="numeric"
                       enterKeyHint="next"
                     />
@@ -144,7 +155,7 @@ export const RegisterScreen: React.FC = () => {
                       value={value}
                       label="código de segurança"
                       mask="[000]"
-                      errorText={formState.errors.name?.message}
+                      errorText={formState.errors.cvv?.message}
                       keyboardType="numeric"
                       enterKeyHint="done"
                     />

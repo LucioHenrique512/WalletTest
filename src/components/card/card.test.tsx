@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
-import {render} from '../../utils/testUtils';
 import {Card} from '.';
+import {render} from '../../../tests/render';
 
 describe('Card', () => {
   const mockOnPress = jest.fn();
@@ -19,7 +19,6 @@ describe('Card', () => {
 
     expect(getByText('Black Card')).toBeTruthy();
     expect(getByText('John Doe')).toBeTruthy();
-    expect(getByText('1234 5678 9012 3456')).toBeTruthy();
     expect(getByText('Validade 12/24')).toBeTruthy();
   });
 
@@ -36,8 +35,24 @@ describe('Card', () => {
 
     expect(getByText('Green Card')).toBeTruthy();
     expect(getByText('Jane Smith')).toBeTruthy();
-    expect(getByText('9876 5432 1098 7654')).toBeTruthy();
     expect(getByText('Validade 06/23')).toBeTruthy();
+  });
+
+  it('should render obfuscated number', () => {
+    const number = '9876 5432 1098 7654';
+    const expected = '•••• •••• •••• 7654';
+
+    const {getByText} = render(
+      <Card
+        name="Jane Smith"
+        number={number}
+        validThru="06/23"
+        type="green"
+        onPress={mockOnPress}
+      />,
+    );
+
+    expect(getByText(expected)).toBeTruthy();
   });
 
   it('should call onPress when pressed', () => {

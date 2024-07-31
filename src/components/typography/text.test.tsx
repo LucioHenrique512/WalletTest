@@ -1,6 +1,6 @@
 import { RFPercentage } from 'react-native-responsive-fontsize';
-import {render} from '../../utils/testUtils';
 import {Text} from './index';
+import { render } from '../../../tests/render';
 
 jest.mock('react-native-responsive-fontsize', () => {
   return {RFPercentage: jest.fn().mockReturnValue(50)};

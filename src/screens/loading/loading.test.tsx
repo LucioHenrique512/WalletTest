@@ -1,9 +1,9 @@
 import React from 'react';
 import {waitFor} from '@testing-library/react-native';
 import {getCards} from '../../infra/api';
-import {render} from '../../utils/testUtils';
 import {LoadingScreen} from '.';
 import {Alert} from 'react-native';
+import { render } from '../../../tests/render';
 
 jest.mock('../../infra/api');
 jest.mock('@react-navigation/native');

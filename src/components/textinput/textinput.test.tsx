@@ -2,7 +2,7 @@ import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
 import {Text} from 'react-native';
 import {TextInput} from '.';
-import {render} from '../../utils/testUtils';
+import { render } from '../../../tests/render';
 
 jest.mock('react-native-text-input-mask', () => {
   return {

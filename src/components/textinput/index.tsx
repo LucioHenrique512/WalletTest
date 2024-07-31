@@ -33,7 +33,9 @@ export const TextInput: React.FC<TextInputProps> = props => {
         {label}
       </Text>
       <Spacing size={RFPercentage(1)} />
-      <TouchableWithoutFeedback onPress={onFieldPress}>
+      <TouchableWithoutFeedback
+        accessibilityLabel={label}
+        onPress={onFieldPress}>
         <S.FieldContainer>
           {leftItem && <S.LeftContainer>{leftItem}</S.LeftContainer>}
           {mask ? (

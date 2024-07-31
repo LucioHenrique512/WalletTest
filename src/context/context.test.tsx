@@ -4,7 +4,7 @@ import {CardType} from '../infra/types';
 import {Text} from 'react-native';
 import {Button} from 'react-native';
 import {AppContextProvider, useAppContext} from '.';
-import {render} from '../utils/testUtils';
+import { render } from '../../tests/render';
 
 const TestComponent = () => {
   const {cards, setCards} = useAppContext();

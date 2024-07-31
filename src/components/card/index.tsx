@@ -2,6 +2,9 @@ import React from 'react';
 import * as S from './styles';
 import {View, Pressable} from 'react-native';
 import {Text} from '../typography';
+import {Spacing} from '../spacing';
+import {RFPercentage} from 'react-native-responsive-fontsize';
+import { obfuscateCardNumber } from '../../utils/textutils';
 
 interface CardProps {
   name: string;
@@ -32,7 +35,8 @@ export const Card: React.FC<CardProps> = ({
           <S.CardOwnerName color={textColor} fontSize="md">
             {name}
           </S.CardOwnerName>
-          <Text color={textColor}>{number}</Text>
+          <Text color={textColor}>{obfuscateCardNumber(number)}</Text>
+          <Spacing size={RFPercentage(0.5)} />
           <Text color={textColor}>Validade {validThru}</Text>
         </View>
       </S.Container>

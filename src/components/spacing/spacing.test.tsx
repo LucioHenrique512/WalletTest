@@ -1,6 +1,6 @@
 import React from 'react';
-import {render} from '../../utils/testUtils';
 import {Spacing} from './index';
+import { render } from '../../../tests/render';
 
 jest.mock('react-native-responsive-fontsize', () => {
   return {RFPercentage: jest.fn().mockReturnValue(50)};

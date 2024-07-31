@@ -1,8 +1,8 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
 import {Text} from 'react-native';
-import { render } from '../../utils/testUtils';
 import { Header } from '.';
+import { render } from '../../../tests/render';
 
 describe('Header', () => {
   it('should render the title correctly', () => {

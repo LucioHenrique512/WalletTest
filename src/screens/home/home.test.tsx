@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
-import {render} from '../../utils/testUtils';
 import {HomeScreen} from '.';
+import { render } from '../../../tests/render';
 
 describe('HomeScreen', () => {
   const mockkNavigate = jest.fn();

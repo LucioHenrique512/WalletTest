@@ -1,8 +1,8 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
 import { Button } from '.';
-import { render } from '../../utils/testUtils';
 import { lightTheme } from '../../themes';
+import { render } from '../../../tests/render';
 
 describe(Button.name, () => {
   afterEach(() => {
