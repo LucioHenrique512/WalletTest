@@ -4,7 +4,7 @@ import {CardType} from './types';
 
 const env = environment();
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: env.apiUrl,
 });
 

@@ -18,7 +18,7 @@ import {MainRouteStackParams} from '../../routes';
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Loading'>;
 
 export const LoadingScreen: React.FC = () => {
-  const {cards, setCards} = useAppContext();
+  const {setCards} = useAppContext();
   const {navigate, reset} = useNavigation<NavigationProps>();
 
   const animatedValue = useSharedValue(0);
@@ -63,7 +63,7 @@ export const LoadingScreen: React.FC = () => {
 
   return (
     <ContainerWithSqares>
-      <S.Content>
+      <S.Content testID='loading-container'>
         <S.LoadingContainer style={animatedStyle}>
           <WalletIcon />
         </S.LoadingContainer>

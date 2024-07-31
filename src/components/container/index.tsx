@@ -6,9 +6,9 @@ export const ContainerWithSqares: React.FC<PropsWithChildren> = ({
 }) => {
   return (
     <S.Container>
-      <S.Square />
+      <S.Square testID="square-top" />
       {children}
-      <S.Square bottom />
+      <S.Square testID="square-bottom" bottom />
     </S.Container>
   );
 };

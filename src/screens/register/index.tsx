@@ -19,7 +19,9 @@ import {
 } from '../../components';
 import {Alert} from 'react-native';
 import {postCard} from '../../infra/api';
-import {delay} from '../../utils';
+
+export const delay = (ms: number) =>
+  new Promise(resolve => setTimeout(resolve, ms));
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Register'>;
 
