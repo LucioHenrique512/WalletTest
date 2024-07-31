@@ -60,7 +60,9 @@ export const AnimatedCard: React.FC<AnimatedCardProps> = ({
   }));
 
   return (
-    <CardContainer style={animatedStyle}>
+    <CardContainer
+      testID={`animated-card-container-${data.id}`}
+      style={animatedStyle}>
       <Card
         onPress={() => {
           onPressCard({index, card: data});

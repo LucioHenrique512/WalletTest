@@ -19,12 +19,12 @@ import {
 } from '../../components';
 import {Alert} from 'react-native';
 import {postCard} from '../../infra/api';
-import { delay } from '../../utils/commonutils';
+import {delay} from '../../utils/commonutils';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Register'>;
 
 export const RegisterScreen: React.FC = () => {
-  const {navigate, reset} = useNavigation<NavigationProps>();
+  const {reset} = useNavigation<NavigationProps>();
   const [loading, setLoading] = useState(false);
 
   const schema = yup.object().shape({
@@ -68,7 +68,6 @@ export const RegisterScreen: React.FC = () => {
         routes: [{name: 'Finish', params: {card: toSave}}],
       });
     } catch (error) {
-      console.log(error);
       Alert.alert('Ops!', 'Ocorreu um erro ao salvar o cartão');
     } finally {
       setLoading(false);

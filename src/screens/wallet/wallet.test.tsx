@@ -5,14 +5,24 @@ import {render} from '../../../tests/render';
 import {useAppContext} from '../../context';
 import {CardType} from '../../infra/types';
 
-const card = {
-  id: '40f32589-7ced-4895-b05d-4b2aaa07a04c',
-  number: '1234 1234 1234 1234',
-  name: 'Relampago Marquinhos',
-  validThru: '12/26',
-  ccv: '255',
-  type: 'black',
-};
+const cards = [
+  {
+    id: '1',
+    number: '1234 1234 1234 1234',
+    name: 'Relampago Marquinhos',
+    validThru: '12/26',
+    ccv: '255',
+    type: 'black',
+  },
+  {
+    id: '2',
+    number: '1234 1234 1234 1234',
+    name: 'Tomate Pistão da Silva',
+    validThru: '12/26',
+    ccv: '255',
+    type: 'black',
+  },
+];
 
 describe('WalletScreen', () => {
   const mockkNavigate = jest.fn();
@@ -53,6 +63,10 @@ describe('WalletScreen', () => {
   });
 
   describe('when have cards', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+
     it('should render card component', () => {
       const card = {
         id: '40f32589-7ced-4895-b05d-4b2aaa07a04c',
@@ -73,7 +87,6 @@ describe('WalletScreen', () => {
 
       const {getByText, debug} = render(<TestComponent />);
 
-
       const cardCompoent = getByText(card.name);
       expect(cardCompoent).toBeTruthy();
     });
@@ -82,14 +95,14 @@ describe('WalletScreen', () => {
       const TestComponent = () => {
         const {setCards} = useAppContext();
         useEffect(() => {
-          setCards([card as CardType]);
+          setCards(cards as CardType[]);
         }, []);
         return <WalletScreen />;
       };
 
-      const {getByText, debug} = render(<TestComponent />);
+      const {getByText} = render(<TestComponent />);
 
-      const cardCompoent = getByText(card.name);
+      const cardCompoent = getByText(cards[0].name);
 
       fireEvent.press(cardCompoent);
 
@@ -97,27 +110,5 @@ describe('WalletScreen', () => {
         expect(getByText('Pagar com esse cartão')).toBeTruthy();
       });
     });
-
-    // it.only('should execute animation when card is selected', () => {
-    //   const TestComponent = () => {
-    //     const {setCards} = useAppContext();
-    //     useEffect(() => {
-    //       setCards([card as CardType]);
-    //     }, []);
-    //     return <WalletScreen />;
-    //   };
-
-    //   const {getByText, debug} = render(<TestComponent />);
-
-    //   debug();
-
-    //   const cardCompoent = getByText(card.name);
-
-    //   fireEvent.press(cardCompoent);
-
-    //   waitFor(() => {
-    //     expect(getByText('Pagar com esse cartão')).toBeTruthy();
-    //   });
-    // });
   });
 });

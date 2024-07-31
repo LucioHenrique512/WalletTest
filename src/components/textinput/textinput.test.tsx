@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {fireEvent} from '@testing-library/react-native';
 import {Text} from 'react-native';
 import {TextInput} from '.';
-import { render } from '../../../tests/render';
+import {render} from '../../../tests/render';
+
+jest.mock('react', () => {
+  const actual = jest.requireActual('react');
+  return {
+    ...actual,
+    useRef: jest.fn(),
+  };
+});
 
 jest.mock('react-native-text-input-mask', () => {
   return {
@@ -68,5 +76,25 @@ describe(TextInput.name, () => {
         error?.message.includes('Unable to find an element with testID'),
       ).toBeTruthy();
     }
+  });
+
+  it('should calls onChangeText when the input value changes', () => {
+    const mockRef = {current: {focus: jest.fn()}};
+
+    (useRef as jest.Mock).mockReturnValue(mockRef);
+
+    const onChangeTextMock = jest.fn();
+    const {getByPlaceholderText} = render(
+      <TextInput
+        onChangeText={onChangeTextMock}
+        value="test-value"
+        placeholder="Digite seu nome"
+      />,
+    );
+    const input = getByPlaceholderText('Digite seu nome');
+
+    fireEvent.press(input);
+
+    expect(mockRef.current.focus).toHaveBeenCalled();
   });
 });

@@ -3,7 +3,7 @@ import {waitFor} from '@testing-library/react-native';
 import {getCards} from '../../infra/api';
 import {LoadingScreen} from '.';
 import {Alert} from 'react-native';
-import { render } from '../../../tests/render';
+import {render} from '../../../tests/render';
 
 jest.mock('../../infra/api');
 jest.mock('@react-navigation/native');
@@ -29,8 +29,7 @@ describe('LoadingScreen component', () => {
       new Error('Failed to fetch cards'),
     );
 
-    const {getByText} = render(<LoadingScreen />);
-    const alertText = 'Ocorreu um erro ao buscar os cartões';
+    render(<LoadingScreen />);
 
     await waitFor(() => {
       expect(getCards).toHaveBeenCalledTimes(1);

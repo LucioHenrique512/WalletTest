@@ -11,7 +11,6 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {Button} from '../../../components';
 
 export type CardData = {index: number; card: CardType};
 
@@ -53,7 +52,7 @@ export const AnimatedCardList: React.FC<AnimatedCardListProps> = ({
   }));
 
   return (
-    <Container style={containerAnimatedStyle}>
+    <Container testID={"animated-card-list"} style={containerAnimatedStyle}>
       {cards.map((data, index) => {
         const initialY = index * -RFPercentage(15);
 

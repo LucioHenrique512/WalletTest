@@ -20,6 +20,8 @@ export const TextInput: React.FC<TextInputProps> = props => {
 
   const {label, leftItem, errorText, mask} = props;
 
+
+
   const onFieldPress = () => {
     if (!ref?.current) {
       return;
