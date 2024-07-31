@@ -3,7 +3,7 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import * as S from './styles';
 import {MainRouteStackParams} from '../../routes';
-import {Button, Header} from '../../components';
+import {Button, Header, Text} from '../../components';
 import {AnimatedCardList} from './components/cardlist';
 import {CardType} from '../../infra/types';
 import {useAppContext} from '../../context';
@@ -33,6 +33,7 @@ export const WalletScreen: React.FC = () => {
         title="Wallet Test"
         rightComponent={
           <TouchableOpacity
+            testID="plus-button"
             onPress={() => {
               navigate('Register');
             }}>
@@ -44,15 +45,21 @@ export const WalletScreen: React.FC = () => {
         <S.ScreenTitle>Meus cartões</S.ScreenTitle>
       </S.ScreenTitleContainer>
       <S.ContentContainer>
-        <AnimatedCardList
-          cards={cards}
-          selectedCard={selectedCard}
-          onPressCard={data => {
-            setSelectedCard(prev =>
-              data.card.id === prev?.card.id ? undefined : data,
-            );
-          }}
-        />
+        {cards.length === 0 || !cards ? (
+          <Text color="white" fontSize="sm">
+            Você não possui cartões cadastrados
+          </Text>
+        ) : (
+          <AnimatedCardList
+            cards={cards}
+            selectedCard={selectedCard}
+            onPressCard={data => {
+              setSelectedCard(prev =>
+                data.card.id === prev?.card.id ? undefined : data,
+              );
+            }}
+          />
+        )}
         {selectedCard && (
           <S.ButtonContainer>
             <AnimatedButton />

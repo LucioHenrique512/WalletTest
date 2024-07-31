@@ -19,9 +19,7 @@ import {
 } from '../../components';
 import {Alert} from 'react-native';
 import {postCard} from '../../infra/api';
-
-export const delay = (ms: number) =>
-  new Promise(resolve => setTimeout(resolve, ms));
+import { delay } from '../../utils/commonutils';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Register'>;
 
@@ -42,7 +40,8 @@ export const RegisterScreen: React.FC = () => {
         const validMonth = Number(month) > 0 && Number(month) <= 12;
         const validYear = Number(year) >= new Date().getFullYear() % 100;
         return validMonth && validYear;
-      }).required("Campo obrigatório"),
+      })
+      .required('Campo obrigatório'),
     cvv: yup.string().required('Campo obrigatório'),
   });
 
@@ -75,7 +74,6 @@ export const RegisterScreen: React.FC = () => {
       setLoading(false);
     }
   };
-
 
   return (
     <ContainerWithSqares>

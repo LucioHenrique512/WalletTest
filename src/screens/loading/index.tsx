@@ -14,6 +14,7 @@ import {getCards} from '../../infra/api';
 import {Alert} from 'react-native';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {MainRouteStackParams} from '../../routes';
+import { delay } from '../../utils/commonutils';
 
 type NavigationProps = NavigationProp<MainRouteStackParams, 'Loading'>;
 
@@ -28,6 +29,7 @@ export const LoadingScreen: React.FC = () => {
       try {
         const {data} = await getCards();
         setCards(data);
+        await delay(2000);
         reset({
           index: 0,
           routes: [{name: 'Home'}, {name: 'Wallet'}],
